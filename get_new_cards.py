@@ -49,7 +49,7 @@ async def make_card(rarity, attr, assetbundleName):
     for i in range(rarity): # 貼上星星
         bg.paste(star, (8+i*(star.size[0]+1), bg.size[1]-31), star)
 
-    bg.save(f'./modules/src/card/{assetbundleName}.png', 'PNG') # 轉換為 binary data，存在 buf
+    bg.save(f'{sys.path[0]}/card/{assetbundleName}.png', 'PNG') # 轉換為 binary data，存在 buf
 
 async def get_all_card():
         async with aiohttp.ClientSession() as session:
