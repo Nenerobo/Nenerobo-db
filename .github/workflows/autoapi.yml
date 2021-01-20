@@ -1,5 +1,5 @@
 #自动调用api保活，加密版
-name: Auto Api Secret
+name: Check new cards
 
 on: 
   release:
@@ -10,7 +10,7 @@ on:
   #  branches: 
   #    - master
   schedule:
-    - cron: '12 */3 * * *'
+    - cron: '0 0 * * *'
   watch:
     types: [started]
 
@@ -31,7 +31,7 @@ jobs:
     - name: Install aiohttp #aiohttp
       run: |
         pip install aiohttp
-    - name: Check new cards #Api调用
+    - name: Call API #Api调用
       run: | 
         echo `date +"%Y-%m-%d %H:%M:%S"` begin > time.log
         python get_new_cards.py
