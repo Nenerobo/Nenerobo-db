@@ -38,11 +38,11 @@ jobs:
         echo `date +"%Y-%m-%d %H:%M:%S"` begin > time.log
     - name: Commit #上传新的refresh_token到仓库
       run: |
-        git config --global user.email AutoupdateRobot@email.com
-        git config --global user.name AutoupdateRobot
-        git add .
+        git config --local user.email "action@github.com"
+        git config --local user.name "github-actions"
+        git add --all
         git commit -m "update new card" -a
     - name: Push changes
-      uses: ad-m/github-push-action@v0.6.0
+      uses: ad-m/github-push-action@master
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
