@@ -9,8 +9,8 @@ import sys, os
 async def make_card(rarity, attr, assetbundleName):
     bg_url = f'https://pjsek.ai/images/member/cardFrame_S_{rarity}.png'
     attr_url = f'https://pjsek.ai/images/member/icon_attribute_{attr}.png'
-    star_url = f'{sys.path[0]}/rarity_star_normal.png'
-    character_url = f'https://assets.pjsek.ai/file/pjsekai-assets/startapp/character/member_cutout/{assetbundleName}/"normal"/thumbnail_xl.png'
+    star_url = r'./modules/src/rarity_star_normal.png' #/home/ubuntu/nenerobo/modules/ # r'D:\PEI\Programing\Python\LearnPython\圖片處理\data\rarity_star_normal.png'
+    character_url = f'https://assets.pjsek.ai/file/pjsekai-assets/startapp/character/member_cutout/{assetbundleName}/{"after_training" if rarity > 2 else "normal"}/thumbnail_xl.png'
 
     # 下載圖片
     async with aiohttp.ClientSession() as session:
@@ -63,7 +63,7 @@ async def get_all_card():
 
 async def main():
     cards = await get_all_card()
-    path=sys.path[0]
+    path=sys.path[0] # +r'/1.txt'
     print(path)
     for card in cards:
         if not os.path.isfile(f'{path}/card/{card["assetbundleName"]}.png'):
@@ -72,6 +72,6 @@ async def main():
     # with open(f"{path}/last.log", 'w+') as f:
     #     f.write(last_id)
 
-
+print(sys.path[0])
 loop = asyncio.get_event_loop()
 loop.run_until_complete(main())
