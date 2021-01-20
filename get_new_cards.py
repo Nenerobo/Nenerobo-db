@@ -7,10 +7,10 @@ import sys, os
 
 
 async def make_card(rarity, attr, assetbundleName):
-    bg_url = f'https://pjsek.ai/members/cardFrame_S_{rarity}.png'
-    attr_url = f'https://pjsek.ai/members/icon_attribute_{attr}.png'
-    star_url = f'{sys.path[0]}/rarity_star_normal.png' #/home/ubuntu/nenerobo/modules/ # r'D:\PEI\Programing\Python\LearnPython\圖片處理\data\rarity_star_normal.png'
-    character_url = f'https://assets.pjsek.ai/file/pjsekai-assets/startapp/character/member_cutout/{assetbundleName}/{"after_training" if rarity > 2 else "normal"}/thumbnail_xl.png'
+    bg_url = f'https://pjsek.ai/images/members/cardFrame_S_{rarity}.png'
+    attr_url = f'https://pjsek.ai/images/members/icon_attribute_{attr}.png'
+    star_url = f'{sys.path[0]}/rarity_star_normal.png'
+    character_url = f'https://assets.pjsek.ai/file/pjsekai-assets/startapp/character/member_cutout/{assetbundleName}/"normal"/thumbnail_xl.png'
 
     # 下載圖片
     async with aiohttp.ClientSession() as session:
