@@ -63,7 +63,8 @@ async def get_all_card():
 
 async def main():
     cards = await get_all_card()
-    path=sys.path[0] # +r'/1.txt'
+    path=sys.path[0]
+    print(path)
     for card in cards:
         if not os.path.isfile(f'{path}/card/{card["assetbundleName"]}.png'):
             print(f'Card File "{card["assetbundleName"]}.png" not exist, try to print card now.')
