@@ -10,7 +10,7 @@ async def make_card(rarity, attr, assetbundleName):
     bg_url = f'https://pjsek.ai/images/member/cardFrame_S_{rarity}.png'
     attr_url = f'https://pjsek.ai/images/member/icon_attribute_{attr}.png'
     star_url = f'{sys.path[0]}/rarity_star_normal.png'
-    character_url = f'https://assets.pjsek.ai/file/pjsekai-assets/startapp/character/member_cutout/{assetbundleName}/{"after_training" if rarity > 2 else "normal"}/thumbnail_xl.png'
+    character_url = f'https://assets.pjsek.ai/file/pjsekai-assets/startapp/character/member_cutout/{assetbundleName}/normal/thumbnail_xl.png'
 
     # 下載圖片
     async with aiohttp.ClientSession() as session:
