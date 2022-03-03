@@ -68,7 +68,12 @@ async def main():
     for card in cards:
         if not os.path.isfile(f'{path}/card/{card["assetbundleName"]}.png'):
             print(f'Card File "{card["assetbundleName"]}.png" not exist, try to print card now.')
-            await make_card(int(card['cardRarityType'].split('_')[-1]), card['attr'], card['assetbundleName'])
+            rarity = card['cardRarityType'].split('_')[-1]
+            if rarity == 'birthday':
+                continue
+            else:
+                rarity = int(rarity)
+            await make_card(rarity, card['attr'], card['assetbundleName'])
     # with open(f"{path}/last.log", 'w+') as f:
     #     f.write(last_id)
 
