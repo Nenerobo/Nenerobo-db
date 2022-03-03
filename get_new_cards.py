@@ -53,7 +53,7 @@ async def make_card(rarity, attr, assetbundleName):
 
 async def get_all_card():
         async with aiohttp.ClientSession() as session:
-            card_info_url = 'https://api.pjsek.ai/database/master/cards?$select[]=id&$select[]=rarity&$select[]=attr&$select[]=assetbundleName&$limit=1000'
+            card_info_url = 'https://api.pjsek.ai/database/master/cards?$select[]=id&$select[]=cardRarityType&$select[]=attr&$select[]=assetbundleName&$limit=1000'
             async with session.get(card_info_url) as resp:
                 if resp.status == 200:
                     all_card = await resp.json()
@@ -68,7 +68,7 @@ async def main():
     for card in cards:
         if not os.path.isfile(f'{path}/card/{card["assetbundleName"]}.png'):
             print(f'Card File "{card["assetbundleName"]}.png" not exist, try to print card now.')
-            await make_card(card['rarity'], card['attr'], card['assetbundleName'])
+            await make_card(int(card['cardRarityType'].split('_')[-1]), card['attr'], card['assetbundleName'])
     # with open(f"{path}/last.log", 'w+') as f:
     #     f.write(last_id)
 
